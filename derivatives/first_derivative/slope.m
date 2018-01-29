@@ -1,4 +1,5 @@
 %% Introduction to MATLAB script slope.m
+
 % First derivative of a function y(x) w.r.t a variable x is computed
 % y and x should be a vector of size m. 
 % [dy_dx]=slope(y,x,m)
@@ -9,11 +10,17 @@ function [dy_dx] = slope(y,x,m)
 
 %% Error checks
     if (~isvector(y) || ~isvector(x))
-    error('Input variable must be a vector')
+        error('Input variable must be a vector')
     end
     if ~isscalar(m)
         error('Dimension of vector should be a scalar')
     end
+    [ysize,cy]=size(y);
+    [xsize,cx]=size(x);
+    if (ysize ~= m || xsize ~= m || cy~=cx)
+        error('Dimension mismatch of vectors passed')
+    end
+    
 
 %% Compution of derivative
 
